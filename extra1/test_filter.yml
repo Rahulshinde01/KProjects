@@ -1,0 +1,16 @@
+---
+- name: Test custom filter plugin
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Apply custom uppercase filter
+      debug:
+        msg: "{{ 'hello world' | upper }}"
+
+    - name: Apply custom uppercase filter to a variable
+      set_fact:
+        my_string: "Ansible is awesome"
+    - debug:
+        msg: "{{ my_string | upper }}" 
